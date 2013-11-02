@@ -1,0 +1,12 @@
+Code to generate surprisal values at words in an input sentence.
+
+The model is essentially an implementation of Stolcke (1995), and inspired by Hale (2001).
+The idea is to use a stochastic Earley parser built for CFGs, and to compute prefix probabilities at each point in a sentence.
+That is, given a sentence w_1,w_2,w_3...w_n, we compute prefix probabilities at each point, i.e. P(w_1), P(w_1,w_2),... P(w_1,w_2,...,w_n)
+Then, the surprisal at each word is given by the log of the ratio of the prefix probability till the previous word and the prefix probability till the current word.
+That is, surprisal(w_i) = log(P(w_1,...,w_(i-1)) / P(w_1,...,w_i))
+
+References:
+> Stolcke, A. (1995). An efficient probabilistic context-free parsing algorithm that computes prefix probabilities. Computational linguistics, 21(2), 165-201.
+
+> Hale, J. (2001, June). A probabilistic Earley parser as a psycholinguistic model. In Proceedings of the second meeting of the North American Chapter of the Association for Computational Linguistics on Language technologies (pp. 1-8). Association for Computational Linguistics.
